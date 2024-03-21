@@ -52,10 +52,10 @@ The REST API to the Sneaker collection is described below.
 
 During the development of the project, I omitted certain principles because I considered them not useful for the scope of the project. You can check below my point of view:
 
-- I didn't use Domain events because I have only one AggregateRoot (Sneaker). I don't need to an operation during parallel task.
+- I didn't use Domain events because I have only one AggregateRoot (Sneaker). I don't need to do an operation during parallel task.
 
 - As I am using EF, the unit of work pattern is implemented by a DBContext and is executed when a call is made to `SaveChange`. (https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design).
 
 - We are using an anemic domain model for simplicity but for complex cases, I would suggest to implement data model object instead of domain entities.
 
-- I didn't create a value object because I believe it wasn't interested to do one for Sneaker.
+- I didn't create a value object because I believe it wasn't interesting to do one for Sneaker.
