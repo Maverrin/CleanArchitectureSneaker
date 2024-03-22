@@ -1,20 +1,16 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Identity;
 
 public class TokenService
 {
     // Specify how long until the token expires
-    private const int ExpirationMinutes = 30;
+    private const int ExpirationMinutes = 300;
     private readonly ILogger<TokenService> _logger;
 
     public TokenService(ILogger<TokenService> logger)

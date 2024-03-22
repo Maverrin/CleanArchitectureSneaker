@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Endpoints;
+
 [Route("[controller]")]
 [ApiController]
 public class SneakerController : ControllerBase
@@ -20,6 +21,7 @@ public class SneakerController : ControllerBase
         _mediator = mediator;
     }
 
+    
     [HttpGet]
     public async Task<List<SneakerDTO>> SneakerCollection()
     {
@@ -47,6 +49,7 @@ public class SneakerController : ControllerBase
         return await _mediator.Send(new GetSneakerByPredicateQuery(where, order));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> CreateSneaker(CreateSneakerCommand command)
     {
@@ -59,6 +62,7 @@ public class SneakerController : ControllerBase
         return Ok();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteSneaker(Guid id)
     {
@@ -66,6 +70,7 @@ public class SneakerController : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateSneaker(Guid id, UpdateSneakerCommand command)
     {

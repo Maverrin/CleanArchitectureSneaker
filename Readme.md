@@ -9,15 +9,45 @@ This project used clean architecture and follow some DDD principles.
 - You will now do the migration: Add-Migration Name
 - Once its done, you will need to update with: Update-Database
 
-
 ## Run the app
 
 - Then, hit F6 (if you're on Visual Studio)
 - A page with Swagger and the Apis will be displayed.
 
+## Access
+
+The endpoints below are restricted for Admin only. You will need to create an account with `Admin` role by using `POST register`.
+`POST Sneaker`
+`DELETE Sneaker`
+`PUT Sneaker`
+
+The endpoints below are not restricted. So, Admin and User can use them.
+`GET Sneaker`
+`GET Sneaker By Id` 
+`GET GetAllFilter`
+
 ## API
 
-The REST API to the Sneaker collection is described below.
+List of the API:
+
+### Register
+
+`POST /api/Authentification/register` 
+
+Create an account with an email, username, password and role.
+
+Note: There are only two roles availables: `Admin` and `User`.
+
+### Login
+
+`POST /api/Authentification/login` 
+
+How to loggin:
+
+- Use the email and password from the Register request (above).
+- In the Response Body you will have a token.
+- Copy and past in the [Authorize] button at the top of the page.
+- You should be logged.
 
 ### Get all the sneakers
 
@@ -45,8 +75,9 @@ The REST API to the Sneaker collection is described below.
 
 ## Improvement for later (Missing)
 
-- Adding unit tests.
+- Adding unit tests (XUnit Test).
 - Add error handling for the Api.
+- Add strong type for sneaker entity. Ex: DateTime instead of int for year. I used int for the simplicity.
 
 ## Note
 

@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Identity;
 
-public enum Role
+public enum Roles
 {
     Admin,
     User

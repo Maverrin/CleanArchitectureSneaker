@@ -26,7 +26,7 @@ public class AuthentificationController : ControllerBase
 
     [HttpPost]
     [Route("register")]
-    public async Task<IActionResult> Register(Register request)
+    public async Task<IActionResult> Register([FromBody] Register request)
     {
         if (!ModelState.IsValid)
         {
@@ -34,7 +34,7 @@ public class AuthentificationController : ControllerBase
         }
 
         var result = await _userManager.CreateAsync(
-            new ApplicationUser { UserName = request.Username, Email = request.Email, Role = Role.User },
+            new ApplicationUser { UserName = request.Username, Email = request.Email, Role = request.Role },
             request.Password!
         );
 
@@ -55,7 +55,7 @@ public class AuthentificationController : ControllerBase
 
     [HttpPost]
     [Route("login")]
-    public async Task<ActionResult<LoginResponse>> Authenticate([FromBody] Login request)
+    public async Task<ActionResult<LoginResponse>> Login([FromBody] Login request)
     {
         if (!ModelState.IsValid)
         {
@@ -86,6 +86,7 @@ public class AuthentificationController : ControllerBase
 
         return Ok(new LoginResponse
         {
+            Username = userInDb.UserName,
             Email = userInDb.Email,
             Token = accessToken,
         });

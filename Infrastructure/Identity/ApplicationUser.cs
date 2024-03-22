@@ -4,5 +4,5 @@ namespace Infrastructure.Identity;
 
 public class ApplicationUser : IdentityUser
 {
-    public Role Role { get; set; }
+    public Roles Role { get; set; }
 }
